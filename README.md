@@ -50,6 +50,30 @@ batch-provenance smart contract — deployed and live by default against a local
 | `/verify/[id]` | Consumer-facing QR scan result (mobile-first), including a live chain-confirmation check |
 | `/admin` | KVIC cluster dashboard — beekeepers, hives, flagged records |
 
+
+
+
+## 📸 Screenshots
+
+### 🏠 Landing Page
+
+![Honey Chain Landing Page](docs/screenshots/landing-page.png)
+
+### 🐝 Beekeeper Dashboard
+
+![Beekeeper Dashboard](docs/screenshots/beekeeper-dashboard.png)
+
+### ➕ Create Honey Batch
+
+![Create Honey Batch](docs/screenshots/create-batch.png)
+
+### 🔍 Consumer Verification
+
+![Consumer Verification](docs/screenshots/verification.png)
+
+
+
+
 ## Architecture
 
 ```mermaid
