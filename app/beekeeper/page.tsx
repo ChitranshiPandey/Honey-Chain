@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { ArrowUpRight, AlertTriangle, ChevronRight } from "lucide-react";
-import { beekeeperProfile, hives } from "@/lib/mock-data";
+import { getBeekeeperProfile, getHives } from "@/lib/api";
 import StatusBadge from "@/components/StatusBadge";
 
-export default function BeekeeperDashboard() {
+export default async function BeekeeperDashboard() {
+  const [beekeeperProfile, hives] = await Promise.all([getBeekeeperProfile(), getHives()]);
   const attentionHives = hives.filter((h) => h.status !== "healthy");
 
   return (

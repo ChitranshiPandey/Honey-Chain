@@ -1,0 +1,18 @@
+{
+  "name": "honey-chain-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Solidity contract + Hardhat project for Honey Chain's on-chain batch provenance ledger",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:amoy": "hardhat run scripts/deploy.js --network amoy",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "node": "hardhat node"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.10"
+  }
+}

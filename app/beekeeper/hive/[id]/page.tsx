@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
-import { hives } from "@/lib/mock-data";
+import { getHive } from "@/lib/api";
 import StatusBadge from "@/components/StatusBadge";
 import HiveTrendChart from "@/components/HiveTrendChart";
 import { WifiOff, ThermometerSun, Droplets, Scale, Activity } from "lucide-react";
 
-export default function HiveMonitoringPage({ params }: { params: { id: string } }) {
-  const hive = hives.find((h) => h.id === params.id);
+export default async function HiveMonitoringPage({ params }: { params: { id: string } }) {
+  const hive = await getHive(params.id);
   if (!hive) return notFound();
 
   return (

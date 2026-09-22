@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import { batches } from "@/lib/mock-data";
+import { getBatch } from "@/lib/api";
 import { CheckCircle2, Circle } from "lucide-react";
 import QrPanel from "@/components/QrPanel";
 
-export default function BatchDetailPage({ params }: { params: { id: string } }) {
-  const batch = batches.find((b) => b.id === params.id);
+export default async function BatchDetailPage({ params }: { params: { id: string } }) {
+  const batch = await getBatch(params.id);
   if (!batch) return notFound();
 
   return (
@@ -52,15 +52,15 @@ export default function BatchDetailPage({ params }: { params: { id: string } }) 
             <div className="space-y-3 text-sm">
               <div>
                 <div className="text-white/40 text-xs">Transaction hash</div>
-                <div className="font-mono text-gold">{batch.txHash}</div>
+                <div className="font-mono text-gold">{batch.txHash ?? "Pending"}</div>
               </div>
               <div>
                 <div className="text-white/40 text-xs">Block number</div>
-                <div>{batch.blockNumber.toLocaleString()}</div>
+                <div>{batch.blockNumber?.toLocaleString() ?? "Pending"}</div>
               </div>
               <div>
                 <div className="text-white/40 text-xs">Network</div>
-                <div>{batch.network}</div>
+                <div>{batch.network ?? "—"}</div>
               </div>
             </div>
           </div>

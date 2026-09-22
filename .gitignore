@@ -5,3 +5,10 @@ out
 *.log
 .env
 .env.local
+tsconfig.tsbuildinfo
+
+# backend
+backend/venv
+backend/**/__pycache__
+backend/*.db
+backend/.env

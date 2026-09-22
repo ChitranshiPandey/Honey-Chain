@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutGrid, Radio, Layers, QrCode, ArrowLeft } from "lucide-react";
-import { beekeeperProfile } from "@/lib/mock-data";
 
 const navItems = [
   { href: "/beekeeper", label: "Dashboard", icon: LayoutGrid },
@@ -12,7 +11,7 @@ const navItems = [
   { href: "/beekeeper/batch/new", label: "New batch", icon: QrCode },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ name, cluster }: { name: string; cluster: string }) {
   const pathname = usePathname();
 
   return (
@@ -49,8 +48,8 @@ export default function Sidebar() {
       </nav>
 
       <div className="px-6 py-5 border-t border-white/10">
-        <div className="text-sm font-medium">{beekeeperProfile.name}</div>
-        <div className="text-xs text-white/50 mt-0.5">{beekeeperProfile.cluster}</div>
+        <div className="text-sm font-medium">{name}</div>
+        <div className="text-xs text-white/50 mt-0.5">{cluster}</div>
       </div>
     </aside>
   );

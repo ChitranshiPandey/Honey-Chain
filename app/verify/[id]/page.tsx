@@ -1,10 +1,14 @@
 import { notFound } from "next/navigation";
-import { batches } from "@/lib/mock-data";
+import { verifyBatch } from "@/lib/api";
 import { CheckCircle2, MapPin, Calendar, Droplet } from "lucide-react";
 
-export default function VerifyPage({ params }: { params: { id: string } }) {
-  const batch = batches.find((b) => b.id === params.id);
-  if (!batch) return notFound();
+// Always backed by a live API call — never statically prerendered at build time.
+export const dynamic = "force-dynamic";
+
+export default async function VerifyPage({ params }: { params: { id: string } }) {
+  const result = await verifyBatch(params.id);
+  if (!result.found || !result.batch) return notFound();
+  const batch = result.batch;
 
   return (
     <div className="min-h-screen bg-paper flex items-start justify-center py-12 px-4">
@@ -64,8 +68,10 @@ export default function VerifyPage({ params }: { params: { id: string } }) {
         </div>
 
         <div className="text-center text-xs text-muted mt-6 leading-relaxed px-4">
-          Blockchain protects this record from tampering. Purity is confirmed through quality
-          checks recorded in the batch journey above.
+          {result.chainConfirmed
+            ? "This record's blockchain seal is intact — it matches the batch as originally recorded."
+            : "This batch has no blockchain record yet."}{" "}
+          Purity is confirmed through quality checks recorded in the batch journey above.
         </div>
       </div>
     </div>

@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { ArrowLeft, Flag } from "lucide-react";
-import { clusterBeekeepers, clusterStats } from "@/lib/mock-data";
+import { getClusterBeekeepers, getClusterStats } from "@/lib/api";
 
-export default function AdminDashboard() {
+// Always backed by a live API call — never statically prerendered at build time.
+export const dynamic = "force-dynamic";
+
+export default async function AdminDashboard() {
+  const [clusterBeekeepers, clusterStats] = await Promise.all([getClusterBeekeepers(), getClusterStats()]);
+
   return (
     <div className="min-h-screen bg-paper">
       <div className="bg-ink text-white px-10 py-6">

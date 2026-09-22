@@ -1,4 +1,4 @@
-import { HiveStatus } from "@/lib/mock-data";
+import { HiveStatus } from "@/lib/types";
 
 const styles: Record<HiveStatus, string> = {
   healthy: "bg-trust-tint text-trust-dark",
