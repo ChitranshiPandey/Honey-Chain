@@ -105,6 +105,15 @@ fact.
 
 Requires [Node.js](https://nodejs.org) 18+ and Python 3.11+.
 
+### Windows — one script
+
+Double-click **`run.bat`** (or run `.\run.ps1` from PowerShell). First run installs everything
+and takes a few minutes; every run after that just starts the app in ~10 seconds. It opens three
+windows (local chain, backend, frontend) — leave them open, then go to
+**http://localhost:3000**.
+
+### Manual (macOS/Linux, or if you want to see each step)
+
 Three terminals for the full live experience (local chain included), or two if you're fine with
 the zero-setup blockchain stub — see the note at the end of this section.
 
